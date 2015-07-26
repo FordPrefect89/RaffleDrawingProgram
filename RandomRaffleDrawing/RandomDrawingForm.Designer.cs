@@ -1,6 +1,6 @@
 ﻿namespace RandomRaffleDrawing
 {
-    partial class Form1
+    partial class RandomDrawingForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RandomDrawingForm));
             this.lblTixNum = new System.Windows.Forms.Label();
             this.txtTickets = new System.Windows.Forms.TextBox();
             this.lblOne = new System.Windows.Forms.Label();
@@ -45,6 +45,10 @@
             this.lblResult2 = new System.Windows.Forms.Label();
             this.lblResult1 = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
+            this.lblResult8 = new System.Windows.Forms.Label();
+            this.lblResult7 = new System.Windows.Forms.Label();
+            this.lblEight = new System.Windows.Forms.Label();
+            this.lblSeven = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTixNum
@@ -221,12 +225,60 @@
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
+            // lblResult8
+            // 
+            this.lblResult8.AutoSize = true;
+            this.lblResult8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult8.Location = new System.Drawing.Point(116, 221);
+            this.lblResult8.Name = "lblResult8";
+            this.lblResult8.Size = new System.Drawing.Size(17, 18);
+            this.lblResult8.TabIndex = 19;
+            this.lblResult8.Text = "8";
+            this.lblResult8.Visible = false;
+            // 
+            // lblResult7
+            // 
+            this.lblResult7.AutoSize = true;
+            this.lblResult7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult7.Location = new System.Drawing.Point(116, 203);
+            this.lblResult7.Name = "lblResult7";
+            this.lblResult7.Size = new System.Drawing.Size(17, 18);
+            this.lblResult7.TabIndex = 18;
+            this.lblResult7.Text = "7";
+            this.lblResult7.Visible = false;
+            // 
+            // lblEight
+            // 
+            this.lblEight.AutoSize = true;
+            this.lblEight.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEight.Location = new System.Drawing.Point(10, 221);
+            this.lblEight.Name = "lblEight";
+            this.lblEight.Size = new System.Drawing.Size(92, 18);
+            this.lblEight.TabIndex = 17;
+            this.lblEight.Text = "Eighth Prize";
+            this.lblEight.Visible = false;
+            // 
+            // lblSeven
+            // 
+            this.lblSeven.AutoSize = true;
+            this.lblSeven.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSeven.Location = new System.Drawing.Point(10, 203);
+            this.lblSeven.Name = "lblSeven";
+            this.lblSeven.Size = new System.Drawing.Size(104, 18);
+            this.lblSeven.TabIndex = 16;
+            this.lblSeven.Text = "Seventh Prize";
+            this.lblSeven.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(239, 209);
+            this.ClientSize = new System.Drawing.Size(239, 245);
+            this.Controls.Add(this.lblResult8);
+            this.Controls.Add(this.lblResult7);
+            this.Controls.Add(this.lblEight);
+            this.Controls.Add(this.lblSeven);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lblResult6);
             this.Controls.Add(this.lblResult5);
@@ -272,6 +324,10 @@
         private System.Windows.Forms.Label lblResult2;
         private System.Windows.Forms.Label lblResult1;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Label lblResult8;
+        private System.Windows.Forms.Label lblResult7;
+        private System.Windows.Forms.Label lblEight;
+        private System.Windows.Forms.Label lblSeven;
     }
 }
 

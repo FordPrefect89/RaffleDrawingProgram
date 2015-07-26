@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RandomRaffleDrawing
 {
-    public partial class Form1 : Form
+    public partial class RandomDrawingForm : Form
     {
-        public Form1()
+        public RandomDrawingForm()
         {
             InitializeComponent();
             btnReset_Click(null, null);
@@ -46,6 +46,8 @@ namespace RandomRaffleDrawing
             lblResult4.Text = RandomNumberGenerator(totalTickets);
             lblResult5.Text = RandomNumberGenerator(totalTickets);
             lblResult6.Text = RandomNumberGenerator(totalTickets);
+            lblResult7.Text = RandomNumberGenerator(totalTickets);
+            lblResult8.Text = RandomNumberGenerator(totalTickets);
         }
 
         private void CheckResults(int totalTickets)
@@ -64,6 +66,12 @@ namespace RandomRaffleDrawing
 
             if (lblResult6.Text == lblResult5.Text || lblResult6.Text == lblResult4.Text || lblResult6.Text == lblResult3.Text || lblResult6.Text == lblResult2.Text || lblResult6.Text == lblResult1.Text)
                 lblResult6.Text = RandomNumberGenerator(totalTickets);
+
+            if (lblResult7.Text == lblResult6.Text || lblResult7.Text == lblResult7.Text || lblResult7.Text == lblResult4.Text || lblResult7.Text == lblResult3.Text || lblResult7.Text == lblResult2.Text || lblResult7.Text == lblResult1.Text)
+                lblResult7.Text = RandomNumberGenerator(totalTickets);
+
+            if (lblResult8.Text == lblResult7.Text || lblResult8.Text == lblResult6.Text || lblResult8.Text == lblResult5.Text || lblResult8.Text == lblResult4.Text || lblResult8.Text == lblResult3.Text || lblResult8.Text == lblResult2.Text || lblResult8.Text == lblResult1.Text)
+                lblResult8.Text = RandomNumberGenerator(totalTickets);
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -75,6 +83,8 @@ namespace RandomRaffleDrawing
             lblResult4.Text = "0";
             lblResult5.Text = "0";
             lblResult6.Text = "0";
+            lblResult7.Text = "0";
+            lblResult8.Text = "0";
         }
 
         private string RandomNumberGenerator(int maxTickets)
@@ -95,6 +105,8 @@ namespace RandomRaffleDrawing
             lblFour.Visible = visible;
             lblFive.Visible = visible;
             lblSix.Visible = visible;
+            lblSeven.Visible = visible;
+            lblEight.Visible = visible;
 
             lblResult1.Visible = visible;
             lblResult2.Visible = visible;
@@ -102,6 +114,8 @@ namespace RandomRaffleDrawing
             lblResult4.Visible = visible;
             lblResult5.Visible = visible;
             lblResult6.Visible = visible;
+            lblResult7.Visible = visible;
+            lblResult8.Visible = visible;
         }
     }
 }
