@@ -71,7 +71,7 @@
             // txtBoughtTix
             // 
             this.txtBoughtTix.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoughtTix.Location = new System.Drawing.Point(9, 111);
+            this.txtBoughtTix.Location = new System.Drawing.Point(9, 127);
             this.txtBoughtTix.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -85,7 +85,7 @@
             // 
             this.btnSubmit.BackColor = System.Drawing.Color.LightGreen;
             this.btnSubmit.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(9, 159);
+            this.btnSubmit.Location = new System.Drawing.Point(137, 98);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(116, 55);
             this.btnSubmit.TabIndex = 2;
@@ -121,11 +121,11 @@
             // 
             this.lblTitleTixPur.AutoSize = true;
             this.lblTitleTixPur.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleTixPur.Location = new System.Drawing.Point(5, 261);
+            this.lblTitleTixPur.Location = new System.Drawing.Point(42, 261);
             this.lblTitleTixPur.Name = "lblTitleTixPur";
-            this.lblTitleTixPur.Size = new System.Drawing.Size(252, 22);
+            this.lblTitleTixPur.Size = new System.Drawing.Size(179, 22);
             this.lblTitleTixPur.TabIndex = 997;
-            this.lblTitleTixPur.Text = "Number of tickets purchased";
+            this.lblTitleTixPur.Text = "Running Ticket Total";
             // 
             // lblNumTixPurchased
             // 
