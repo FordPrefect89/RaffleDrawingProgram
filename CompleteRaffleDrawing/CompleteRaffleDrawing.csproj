@@ -52,11 +52,26 @@
       <DependentUpon>CompleeRaffleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="dbActions.cs" />
+    <Compile Include="Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help.Designer.cs">
+      <DependentUpon>Help.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RaffleDrawingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaffleDrawingForm.Designer.cs">
+      <DependentUpon>RaffleDrawingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="XMLDataTypes.cs" />
     <EmbeddedResource Include="CompleeRaffleForm.resx">
       <DependentUpon>CompleeRaffleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -67,6 +82,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RaffleDrawingForm.resx">
+      <DependentUpon>RaffleDrawingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -79,6 +97,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ebonheart_pact_U4e_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

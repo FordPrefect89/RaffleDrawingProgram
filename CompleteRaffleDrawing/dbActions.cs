@@ -12,19 +12,12 @@ namespace CompleteRaffleDrawing
 {
     class dbActions
     {
-        private string ReturnConnectionString()
-        {
-            string con = "Server=rthowell89.db.13580181.hostedresource.com;User Id=rthowell89;Password=Mag#tar5;";
-            return con;
-        }
-
-        private void DatabaseWrite(SqlCommand cmd, string query)
-        {
-
-        }
-
         public void InsertBuyer(string buyerName, int boughtTickets, int bonus, int startValue, int endValue)
         {
+            /*
+             * Writes the buyers name, number of tickets bought plus bonus tickets to the database.
+             * Also writes the "starting" and "ending" number for the buyer of the ticket.
+             */
             SqlConnection con = new SqlConnection(ReturnConnectionString());
             string query = "INSERT INTO dbo.TicketBuyer VALUES (@name, @bought, @bonus, @start, @end)";
 
@@ -41,8 +34,44 @@ namespace CompleteRaffleDrawing
             con.Close();
         }
 
+        public void ClearTicketBuyerTable()
+        {
+            /*
+             * This is to clear the database table after a raffle is run.  This also inserts
+             * a blank row after clearing the database to be able to get the starting number of
+             * zero when the program starts again.
+             */
+            SqlConnection con = new SqlConnection(ReturnConnectionString());
+            string clearTable = "DELETE FROM dbo.TicketBuyer",
+                insertZero = "INSERT INTO dbo.TicketBuyer VALUES (@name, @bought, @bonus, @start, @end)";
+
+            var cmd = new SqlCommand(clearTable, con);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            cmd = new SqlCommand(insertZero, con);
+
+            cmd.Parameters.AddWithValue("@name", SqlDbType.Text).Value = "blank";
+            cmd.Parameters.AddWithValue("@bought", SqlDbType.Int).Value = 0;
+            cmd.Parameters.AddWithValue("@bonus", SqlDbType.Int).Value = 0;
+            cmd.Parameters.AddWithValue("@start", SqlDbType.Int).Value = 0;
+            cmd.Parameters.AddWithValue("@end", SqlDbType.Int).Value = 0;
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
         public int GetTicketAmount()
         {
+            /*
+             * Called when the lblNumTixPurchased needs to be updated.
+             * TODO:
+             *      Create SQL function to return int versus calling
+             *      ReturnTicketCount to get the max ticket number from
+             *      the database.
+             */
             int ticketsSold = 0;
             SqlConnection con = new SqlConnection(ReturnConnectionString());
             
@@ -64,6 +93,11 @@ namespace CompleteRaffleDrawing
 
         private int ReturnTicketCount(DataTable dt)
         {
+            /*
+             * This is taking the place currently of an SQL funciton
+             * to return an int from the database.  Once the SQL function
+             * is working, this method will no longer be needed.
+             */
             int returnCount = 0;
             var jnkQuery = from jnkDt in dt.AsEnumerable()
                            select new
@@ -76,6 +110,13 @@ namespace CompleteRaffleDrawing
             }
 
             return returnCount;
+        }
+
+        private string ReturnConnectionString()
+        {
+            // Returns the connection to connect to the database.
+            string con = "Server=rthowell89.db.13580181.hostedresource.com;User Id=rthowell89;Password=Mag#tar5;";
+            return con;
         }
     }
 }

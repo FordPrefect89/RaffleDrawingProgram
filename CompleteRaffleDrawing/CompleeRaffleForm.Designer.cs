@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInquisRaffleEntry));
             this.txtBuyerName = new System.Windows.Forms.TextBox();
             this.lblEnterName = new System.Windows.Forms.Label();
             this.lblNumTix = new System.Windows.Forms.Label();
@@ -37,13 +38,21 @@
             this.btnRunRaffle = new System.Windows.Forms.Button();
             this.lblTitleTixPur = new System.Windows.Forms.Label();
             this.lblNumTixPurchased = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tsmFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmClearDatabase = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuSeperator = new System.Windows.Forms.ToolStripSeparator();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmHelp = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoughtTix)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtBuyerName
             // 
             this.txtBuyerName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuyerName.Location = new System.Drawing.Point(9, 30);
+            this.txtBuyerName.Location = new System.Drawing.Point(5, 53);
             this.txtBuyerName.Name = "txtBuyerName";
             this.txtBuyerName.Size = new System.Drawing.Size(197, 26);
             this.txtBuyerName.TabIndex = 0;
@@ -52,7 +61,7 @@
             // 
             this.lblEnterName.AutoSize = true;
             this.lblEnterName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEnterName.Location = new System.Drawing.Point(9, 9);
+            this.lblEnterName.Location = new System.Drawing.Point(5, 32);
             this.lblEnterName.Name = "lblEnterName";
             this.lblEnterName.Size = new System.Drawing.Size(197, 18);
             this.lblEnterName.TabIndex = 998;
@@ -62,7 +71,7 @@
             // 
             this.lblNumTix.AutoSize = true;
             this.lblNumTix.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumTix.Location = new System.Drawing.Point(9, 68);
+            this.lblNumTix.Location = new System.Drawing.Point(5, 91);
             this.lblNumTix.Name = "lblNumTix";
             this.lblNumTix.Size = new System.Drawing.Size(244, 18);
             this.lblNumTix.TabIndex = 999;
@@ -71,7 +80,7 @@
             // txtBoughtTix
             // 
             this.txtBoughtTix.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoughtTix.Location = new System.Drawing.Point(9, 127);
+            this.txtBoughtTix.Location = new System.Drawing.Point(5, 150);
             this.txtBoughtTix.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -85,7 +94,7 @@
             // 
             this.btnSubmit.BackColor = System.Drawing.Color.LightGreen;
             this.btnSubmit.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(137, 98);
+            this.btnSubmit.Location = new System.Drawing.Point(133, 121);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(116, 55);
             this.btnSubmit.TabIndex = 2;
@@ -97,7 +106,7 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Tomato;
             this.btnCancel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(137, 159);
+            this.btnCancel.Location = new System.Drawing.Point(133, 182);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(116, 55);
             this.btnCancel.TabIndex = 3;
@@ -109,7 +118,7 @@
             // 
             this.btnRunRaffle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnRunRaffle.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRunRaffle.Location = new System.Drawing.Point(9, 221);
+            this.btnRunRaffle.Location = new System.Drawing.Point(5, 244);
             this.btnRunRaffle.Name = "btnRunRaffle";
             this.btnRunRaffle.Size = new System.Drawing.Size(244, 33);
             this.btnRunRaffle.TabIndex = 4;
@@ -121,7 +130,7 @@
             // 
             this.lblTitleTixPur.AutoSize = true;
             this.lblTitleTixPur.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleTixPur.Location = new System.Drawing.Point(42, 261);
+            this.lblTitleTixPur.Location = new System.Drawing.Point(38, 284);
             this.lblTitleTixPur.Name = "lblTitleTixPur";
             this.lblTitleTixPur.Size = new System.Drawing.Size(179, 22);
             this.lblTitleTixPur.TabIndex = 997;
@@ -131,18 +140,73 @@
             // 
             this.lblNumTixPurchased.AutoSize = true;
             this.lblNumTixPurchased.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumTixPurchased.Location = new System.Drawing.Point(121, 287);
+            this.lblNumTixPurchased.Location = new System.Drawing.Point(117, 310);
             this.lblNumTixPurchased.Name = "lblNumTixPurchased";
             this.lblNumTixPurchased.Size = new System.Drawing.Size(21, 22);
             this.lblNumTixPurchased.TabIndex = 996;
             this.lblNumTixPurchased.Text = "0";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmFile,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(255, 24);
+            this.menuStrip1.TabIndex = 1000;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // tsmFile
+            // 
+            this.tsmFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmClearDatabase,
+            this.MenuSeperator,
+            this.tsmExit});
+            this.tsmFile.Name = "tsmFile";
+            this.tsmFile.Size = new System.Drawing.Size(37, 20);
+            this.tsmFile.Text = "&File";
+            // 
+            // tsmClearDatabase
+            // 
+            this.tsmClearDatabase.Name = "tsmClearDatabase";
+            this.tsmClearDatabase.Size = new System.Drawing.Size(152, 22);
+            this.tsmClearDatabase.Text = "&Clear Database";
+            this.tsmClearDatabase.Click += new System.EventHandler(this.clearDatabaseToolStripMenuItem_Click);
+            // 
+            // tsmExit
+            // 
+            this.tsmExit.Name = "tsmExit";
+            this.tsmExit.Size = new System.Drawing.Size(152, 22);
+            this.tsmExit.Text = "E&xit";
+            this.tsmExit.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // MenuSeperator
+            // 
+            this.MenuSeperator.Name = "MenuSeperator";
+            this.MenuSeperator.Size = new System.Drawing.Size(149, 6);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmHelp});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
+            // 
+            // tsmHelp
+            // 
+            this.tsmHelp.Name = "tsmHelp";
+            this.tsmHelp.Size = new System.Drawing.Size(152, 22);
+            this.tsmHelp.Text = "&General Help";
+            this.tsmHelp.Click += new System.EventHandler(this.tsmHelp_Click);
             // 
             // frmInquisRaffleEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.ClientSize = new System.Drawing.Size(261, 318);
+            this.ClientSize = new System.Drawing.Size(255, 335);
             this.Controls.Add(this.lblNumTixPurchased);
             this.Controls.Add(this.lblTitleTixPur);
             this.Controls.Add(this.btnRunRaffle);
@@ -152,10 +216,17 @@
             this.Controls.Add(this.lblNumTix);
             this.Controls.Add(this.lblEnterName);
             this.Controls.Add(this.txtBuyerName);
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "frmInquisRaffleEntry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Inquis Raffle";
+            this.Text = "Warmart Raffle";
             ((System.ComponentModel.ISupportInitialize)(this.txtBoughtTix)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,6 +243,13 @@
         private System.Windows.Forms.Button btnRunRaffle;
         private System.Windows.Forms.Label lblTitleTixPur;
         private System.Windows.Forms.Label lblNumTixPurchased;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsmFile;
+        private System.Windows.Forms.ToolStripMenuItem tsmClearDatabase;
+        private System.Windows.Forms.ToolStripMenuItem tsmExit;
+        private System.Windows.Forms.ToolStripSeparator MenuSeperator;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmHelp;
     }
 }
 
