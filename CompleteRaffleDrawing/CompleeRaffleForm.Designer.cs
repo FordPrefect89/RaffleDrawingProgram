@@ -41,8 +41,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmFile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmClearDatabase = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuSeperator = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmHelp = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoughtTix)).BeginInit();
@@ -79,15 +79,15 @@
             // 
             // txtBoughtTix
             // 
-            this.txtBoughtTix.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoughtTix.Location = new System.Drawing.Point(5, 150);
+            this.txtBoughtTix.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoughtTix.Location = new System.Drawing.Point(5, 144);
             this.txtBoughtTix.Maximum = new decimal(new int[] {
             99999,
             0,
             0,
             0});
             this.txtBoughtTix.Name = "txtBoughtTix";
-            this.txtBoughtTix.Size = new System.Drawing.Size(120, 26);
+            this.txtBoughtTix.Size = new System.Drawing.Size(120, 32);
             this.txtBoughtTix.TabIndex = 1;
             // 
             // btnSubmit
@@ -174,6 +174,11 @@
             this.tsmClearDatabase.Text = "&Clear Database";
             this.tsmClearDatabase.Click += new System.EventHandler(this.clearDatabaseToolStripMenuItem_Click);
             // 
+            // MenuSeperator
+            // 
+            this.MenuSeperator.Name = "MenuSeperator";
+            this.MenuSeperator.Size = new System.Drawing.Size(149, 6);
+            // 
             // tsmExit
             // 
             this.tsmExit.Name = "tsmExit";
@@ -181,16 +186,12 @@
             this.tsmExit.Text = "E&xit";
             this.tsmExit.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // MenuSeperator
-            // 
-            this.MenuSeperator.Name = "MenuSeperator";
-            this.MenuSeperator.Size = new System.Drawing.Size(149, 6);
-            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmHelp});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
             // 
