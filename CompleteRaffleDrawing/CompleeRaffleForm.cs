@@ -19,9 +19,9 @@ namespace CompleteRaffleDrawing
         {
             InitializeComponent();
             lblNumTix.Text = "Enter number of purchased tickets\r\n(No Bonus)";
-            //dbActions tmpCount = new dbActions();
-            //int ticketCount = tmpCount.GetTicketAmount();
-            //lblNumTixPurchased.Text = ticketCount.ToString();
+            dbActions tmpCount = new dbActions();
+            int ticketCount = tmpCount.GetTicketAmount();
+            lblNumTixPurchased.Text = ticketCount.ToString();
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -53,13 +53,14 @@ namespace CompleteRaffleDrawing
              * TODO:
              *      This will implement the raffle drawing.  The raffle
              *      drawing will consist of the following:
-             *      1) Drawing eight (8) winners, no duplicates.
-             *      2) Get the winners name from the database based on the drawn number.
-             *      3) Next to winners name, place a random number label 1-6, d6 simumlator
-             *      4) Draw (x) number of "boobie" prize winners.  None of these winners can match the first eight (8).
+             *      1) Drawing eight (8) winners, no duplicates. ** DONE **
+             *      2) Get the winners name from the database based on the drawn number. ** DONE **
+             *      3) Next to winners name, place a random number label 1-6, d6 simumlator ** DONE **
+             *      4) Draw (8) number of "boobie" prize winners.  None of these winners can match the first eight (8).
              *      5) Once drawing is complete, give option to clear database(?).
              */
-            
+            var resultsForm = new frmRaffleDrawing();
+            resultsForm.Show();
         }
 
         private void clearDatabaseToolStripMenuItem_Click(object sender, EventArgs e)

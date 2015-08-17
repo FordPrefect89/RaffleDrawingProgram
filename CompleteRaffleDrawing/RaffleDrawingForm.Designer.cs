@@ -114,41 +114,49 @@
             // lblWinner8
             // 
             resources.ApplyResources(this.lblWinner8, "lblWinner8");
+            this.lblWinner8.ForeColor = System.Drawing.Color.Purple;
             this.lblWinner8.Name = "lblWinner8";
             // 
             // lblWinner7
             // 
             resources.ApplyResources(this.lblWinner7, "lblWinner7");
+            this.lblWinner7.ForeColor = System.Drawing.Color.Purple;
             this.lblWinner7.Name = "lblWinner7";
             // 
             // lblWinner6
             // 
             resources.ApplyResources(this.lblWinner6, "lblWinner6");
+            this.lblWinner6.ForeColor = System.Drawing.Color.Purple;
             this.lblWinner6.Name = "lblWinner6";
             // 
             // lblWinner5
             // 
             resources.ApplyResources(this.lblWinner5, "lblWinner5");
+            this.lblWinner5.ForeColor = System.Drawing.Color.Purple;
             this.lblWinner5.Name = "lblWinner5";
             // 
             // lblWinner4
             // 
             resources.ApplyResources(this.lblWinner4, "lblWinner4");
+            this.lblWinner4.ForeColor = System.Drawing.Color.Purple;
             this.lblWinner4.Name = "lblWinner4";
             // 
             // lblWinner3
             // 
             resources.ApplyResources(this.lblWinner3, "lblWinner3");
+            this.lblWinner3.ForeColor = System.Drawing.Color.Purple;
             this.lblWinner3.Name = "lblWinner3";
             // 
             // lblWinner2
             // 
             resources.ApplyResources(this.lblWinner2, "lblWinner2");
+            this.lblWinner2.ForeColor = System.Drawing.Color.Purple;
             this.lblWinner2.Name = "lblWinner2";
             // 
             // lblWinner1
             // 
             resources.ApplyResources(this.lblWinner1, "lblWinner1");
+            this.lblWinner1.ForeColor = System.Drawing.Color.Purple;
             this.lblWinner1.Name = "lblWinner1";
             // 
             // lbld6Roll8
@@ -245,6 +253,7 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.Controls.Add(this.lblBonus8);
             this.Controls.Add(this.lblBonus7);
             this.Controls.Add(this.lblBonus6);

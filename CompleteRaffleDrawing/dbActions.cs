@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CompleteRaffleDrawing
 {
@@ -23,15 +24,23 @@ namespace CompleteRaffleDrawing
 
             var cmd = new SqlCommand(query, con);
 
-            cmd.Parameters.AddWithValue("@name", SqlDbType.Text).Value = buyerName;
+            cmd.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = buyerName;
             cmd.Parameters.AddWithValue("@bought", SqlDbType.Int).Value = boughtTickets;
             cmd.Parameters.AddWithValue("@bonus", SqlDbType.Int).Value = bonus;
             cmd.Parameters.AddWithValue("@start", SqlDbType.Int).Value = startValue;
             cmd.Parameters.AddWithValue("@end", SqlDbType.Int).Value = endValue;
 
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Unable to connecto to database\nPlease check Internet connection\nand try again", "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExitApplication();
+            }
         }
 
         public void ClearTicketBuyerTable()
@@ -40,27 +49,45 @@ namespace CompleteRaffleDrawing
              * This is to clear the database table after a raffle is run.  This also inserts
              * a blank row after clearing the database to be able to get the starting number of
              * zero when the program starts again.
+             * 
+             * TODO:
+             *      Clean up code.  Too many calls to the same code could be put into seperate method.
              */
             SqlConnection con = new SqlConnection(ReturnConnectionString());
             string clearTable = "DELETE FROM dbo.TicketBuyer",
                 insertZero = "INSERT INTO dbo.TicketBuyer VALUES (@name, @bought, @bonus, @start, @end)";
 
             var cmd = new SqlCommand(clearTable, con);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
-
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Unable to connecto to database\nPlease check Internet connection\nand try again", "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExitApplication();
+            }
             cmd = new SqlCommand(insertZero, con);
 
-            cmd.Parameters.AddWithValue("@name", SqlDbType.Text).Value = "blank";
+            cmd.Parameters.AddWithValue("@name", SqlDbType.VarChar).Value = "blank";
             cmd.Parameters.AddWithValue("@bought", SqlDbType.Int).Value = 0;
             cmd.Parameters.AddWithValue("@bonus", SqlDbType.Int).Value = 0;
             cmd.Parameters.AddWithValue("@start", SqlDbType.Int).Value = 0;
             cmd.Parameters.AddWithValue("@end", SqlDbType.Int).Value = 0;
 
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Unable to connecto to database\nPlease check Internet connection\nand try again", "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExitApplication();
+            }
         }
 
         public int GetTicketAmount()
@@ -73,21 +100,9 @@ namespace CompleteRaffleDrawing
              *      the database.
              */
             int ticketsSold = 0;
-            SqlConnection con = new SqlConnection(ReturnConnectionString());
-            
             string query = "SELECT MAX(TicketNumberEnd) AS Tickets FROM dbo.TicketBuyer";
-
-            SqlDataAdapter da = new SqlDataAdapter(query, con);
-            DataSet ds = new DataSet();
-            var cmd = new SqlCommand(query, con);
-
-            con.Open();
-            da.Fill(ds);
-            con.Close();
-
-            DataTable dt = ds.Tables[0];
+            DataTable dt = ReturnQueryDataTable(query);
             ticketsSold = ReturnTicketCount(dt);
-
             return ticketsSold;
         }
 
@@ -110,6 +125,94 @@ namespace CompleteRaffleDrawing
             }
 
             return returnCount;
+        }
+
+        public string GetWinnerName(int winningNumber)
+        {
+            /*
+             * TODO:
+             *      Create SQL function to return string versus calling
+             *      ReturnWinnerNameFromDataTable to get the max ticket
+             *      number from the database.
+             */
+            string query = string.Concat("SELECT DISTINCT BuyerName FROM dbo.TicketBuyer WHERE ", winningNumber, " BETWEEN TicketNumberStart AND TicketNumberEnd;");
+            DataTable dt = ReturnQueryDataTable(query);
+            string winner = ReturnWinnerNameFromDataTable(dt);
+            return winner;
+        }
+
+        private string ReturnWinnerNameFromDataTable(DataTable dt)
+        {
+            string winner = string.Empty;
+            var jnkQuery = from jnkDt in dt.AsEnumerable()
+                           select new
+                           {
+                               name = jnkDt.Field<string>("BuyerName")
+                           };
+            foreach (var jnkWinner in jnkQuery)
+            {
+                winner = jnkWinner.name;
+            }
+
+            return winner;
+        }
+
+        public int ReturnBuyerCount()
+        {
+            /*
+             * TODO:
+             *      Create SQL function to return int versus calling
+             *      ReturnTotalBuyers to get the max ticket
+             *      number from the database.
+             */
+            string query = "SELECT COUNT(DISTINCT BuyerName) AS Buyers FROM dbo.TicketBuyer";
+            DataTable dt = ReturnQueryDataTable(query);
+            int totalBuyers = ReturnTotalBuyers(dt);
+
+            return totalBuyers;
+        }
+
+        private int ReturnTotalBuyers(DataTable dt)
+        {
+            int returnCount = 0;
+            var jnkQuery = from jnkDt in dt.AsEnumerable()
+                           select new
+                           {
+                               count = jnkDt.Field<int>("Buyers")
+                           };
+            foreach (var buyerCount in jnkQuery)
+            {
+                returnCount = Convert.ToInt32(buyerCount.count);
+            }
+
+            return returnCount;
+        }
+
+        private DataTable ReturnQueryDataTable(string query)
+        {
+            SqlConnection con = new SqlConnection(ReturnConnectionString());
+            SqlDataAdapter da = new SqlDataAdapter(query, con);
+            DataSet ds = new DataSet();
+
+            try
+            {
+                con.Open();
+                da.Fill(ds);
+                con.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Unable to connecto to database\nPlease check Internet connection\nand try again", "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExitApplication();
+            }
+
+            DataTable dt = ds.Tables[0];
+            return dt;
+        }
+
+        private void ExitApplication()
+        {
+            System.Environment.Exit(0);
         }
 
         private string ReturnConnectionString()
