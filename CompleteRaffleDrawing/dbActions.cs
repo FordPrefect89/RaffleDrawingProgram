@@ -99,14 +99,12 @@ namespace CompleteRaffleDrawing
              *      ReturnTicketCount to get the max ticket number from
              *      the database.
              */
-            int ticketsSold = 0;
             string query = "SELECT MAX(TicketNumberEnd) AS Tickets FROM dbo.TicketBuyer";
             DataTable dt = ReturnQueryDataTable(query);
-            ticketsSold = ReturnTicketCount(dt);
-            return ticketsSold;
+            return ReturnTicketCount(dt);
         }
 
-        private int ReturnTicketCount(DataTable dt)
+        private static int ReturnTicketCount(DataTable dt)
         {
             /*
              * This is taking the place currently of an SQL funciton
@@ -137,11 +135,10 @@ namespace CompleteRaffleDrawing
              */
             string query = string.Concat("SELECT DISTINCT BuyerName FROM dbo.TicketBuyer WHERE ", winningNumber, " BETWEEN TicketNumberStart AND TicketNumberEnd;");
             DataTable dt = ReturnQueryDataTable(query);
-            string winner = ReturnWinnerNameFromDataTable(dt);
-            return winner;
+            return ReturnWinnerNameFromDataTable(dt);
         }
 
-        private string ReturnWinnerNameFromDataTable(DataTable dt)
+        private static string ReturnWinnerNameFromDataTable(DataTable dt)
         {
             string winner = string.Empty;
             var jnkQuery = from jnkDt in dt.AsEnumerable()
@@ -167,12 +164,10 @@ namespace CompleteRaffleDrawing
              */
             string query = "SELECT COUNT(DISTINCT BuyerName) AS Buyers FROM dbo.TicketBuyer";
             DataTable dt = ReturnQueryDataTable(query);
-            int totalBuyers = ReturnTotalBuyers(dt);
-
-            return totalBuyers;
+            return ReturnTotalBuyers(dt);
         }
 
-        private int ReturnTotalBuyers(DataTable dt)
+        private static int ReturnTotalBuyers(DataTable dt)
         {
             int returnCount = 0;
             var jnkQuery = from jnkDt in dt.AsEnumerable()
@@ -186,6 +181,38 @@ namespace CompleteRaffleDrawing
             }
 
             return returnCount;
+        }
+
+        public List<string> ReturnDistinctBuyers(string[] winnerNames)
+        {
+            /*
+             * This will return a list of buyer names that did NOT
+             * win one of the eight prizes.  This list creates is
+             * the basis for the bonus prize winners.
+             */
+            string query = "SELECT DISTINCT BuyerName from dbo.TicketBuyer";
+            DataTable dt = ReturnQueryDataTable(query);
+            return ReturnTotalDistinctBuyers(dt, winnerNames);
+        }
+
+        private static List<string> ReturnTotalDistinctBuyers(DataTable dt, string[] winnerNames)
+        {
+            List<string> buyerNames = new List<string>();
+
+            var jnkQuery = from jnkDt in dt.AsEnumerable()
+                           select new
+                           {
+                               buyer = jnkDt.Field<string>("BuyerName")
+                           };
+            foreach (var jnkBuyer in jnkQuery)
+            {
+                if (Array.Exists(winnerNames, element => element == jnkBuyer.buyer) == false)
+                {
+                    buyerNames.Add(jnkBuyer.buyer);
+                }
+            }
+
+            return buyerNames;
         }
 
         private DataTable ReturnQueryDataTable(string query)
@@ -210,12 +237,13 @@ namespace CompleteRaffleDrawing
             return dt;
         }
 
-        private void ExitApplication()
+        private static void ExitApplication()
         {
+            // Exits the program if unable to connect to the database after message box is displayed.
             System.Environment.Exit(0);
         }
 
-        private string ReturnConnectionString()
+        private static string ReturnConnectionString()
         {
             // Returns the connection to connect to the database.
             string con = "Server=rthowell89.db.13580181.hostedresource.com;User Id=rthowell89;Password=Mag#tar5;";

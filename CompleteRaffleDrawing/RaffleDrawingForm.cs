@@ -20,7 +20,7 @@ namespace CompleteRaffleDrawing
             int[] winningNumbers = ReturnDrawingNumber(ticketTotal);
             PlaceWinnerNames(winningNumbers);
             PlaceD6Roll();
-            int[] bonusPrizes = ReturnDrawingNumber(ticketTotal);
+            GenerateBonusPrizeWinners();
         }
 
         private void PlaceWinnerNames(int[] winNumber)
@@ -34,6 +34,31 @@ namespace CompleteRaffleDrawing
             lblWinner6.Text = dBase.GetWinnerName(winNumber[5]);
             lblWinner7.Text = dBase.GetWinnerName(winNumber[6]);
             lblWinner8.Text = dBase.GetWinnerName(winNumber[7]);
+        }
+
+        private void GenerateBonusPrizeWinners()
+        {
+            dbActions db = new dbActions();
+            string[] winners = WinnersArray();
+            List<string> nonWinners = db.ReturnDistinctBuyers(winners);
+
+            lblBonus1.Text = nonWinners[BonusRandomNumberGenerator(nonWinners)];
+            lblBonus2.Text = nonWinners[BonusRandomNumberGenerator(nonWinners)];
+            lblBonus3.Text = nonWinners[BonusRandomNumberGenerator(nonWinners)];
+            lblBonus4.Text = nonWinners[BonusRandomNumberGenerator(nonWinners)];
+            lblBonus5.Text = nonWinners[BonusRandomNumberGenerator(nonWinners)];
+            lblBonus6.Text = nonWinners[BonusRandomNumberGenerator(nonWinners)];
+            lblBonus7.Text = nonWinners[BonusRandomNumberGenerator(nonWinners)];
+            lblBonus8.Text = nonWinners[BonusRandomNumberGenerator(nonWinners)];
+        }
+
+        private int BonusRandomNumberGenerator(List<string> nonWinners)
+        {
+            Random randomNumber = new Random(),
+                   randomTimer = new Random();
+
+            System.Threading.Thread.Sleep(randomTimer.Next(1, 500));
+            return randomNumber.Next(1, nonWinners.Count());
         }
 
         private void PlaceD6Roll()
