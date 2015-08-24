@@ -36,6 +36,11 @@ namespace CompleteRaffleDrawing
 
                 dbWrite.InsertBuyer(txtBuyerName.Text, Convert.ToInt32(txtBoughtTix.Value), bonusTix, startValue, endValue);
                 lblNumTixPurchased.Text = dbWrite.GetTicketAmount().ToString();
+
+                MessageBox.Show(string.Concat(txtBuyerName.Text, " bought\n", txtBoughtTix.Value.ToString()," tickets\nWith ", bonusTix.ToString(), " bonus tickets."), "Ticket Purchase", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                txtBuyerName.Text = string.Empty;
+                txtBoughtTix.Value = 0;
             }
         }
 
