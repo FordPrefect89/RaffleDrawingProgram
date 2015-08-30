@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TicketBuyerInfo" targetNamespace="http://tempuri.org/TicketBuyerInfo.xsd" xmlns:mstns="http://tempuri.org/TicketBuyerInfo.xsd" xmlns="http://tempuri.org/TicketBuyerInfo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="rthowell89ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="rthowell89ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CompleteRaffleDrawing.Properties.Settings.GlobalReference.Default.rthowell89ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TicketBuyerTableAdapter" GeneratorDataComponentClassName="TicketBuyerTableAdapter" Name="TicketBuyer" UserDataComponentName="TicketBuyerTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="rthowell89ConnectionString (Settings)" DbObjectName="rthowell89.dbo.TicketBuyer" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT BuyerName, TicketsBought, BonusTickets FROM dbo.TicketBuyer</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="BuyerName" DataSetColumn="BuyerName" />
+              <Mapping SourceColumn="TicketsBought" DataSetColumn="TicketsBought" />
+              <Mapping SourceColumn="BonusTickets" DataSetColumn="BonusTickets" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TicketBuyerInfo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="TicketBuyerInfo" msprop:Generator_UserDSName="TicketBuyerInfo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TicketBuyer" msprop:Generator_TableClassName="TicketBuyerDataTable" msprop:Generator_TableVarName="tableTicketBuyer" msprop:Generator_TablePropName="TicketBuyer" msprop:Generator_RowDeletingName="TicketBuyerRowDeleting" msprop:Generator_RowChangingName="TicketBuyerRowChanging" msprop:Generator_RowEvHandlerName="TicketBuyerRowChangeEventHandler" msprop:Generator_RowDeletedName="TicketBuyerRowDeleted" msprop:Generator_UserTableName="TicketBuyer" msprop:Generator_RowChangedName="TicketBuyerRowChanged" msprop:Generator_RowEvArgName="TicketBuyerRowChangeEvent" msprop:Generator_RowClassName="TicketBuyerRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BuyerName" msprop:Generator_ColumnVarNameInTable="columnBuyerName" msprop:Generator_ColumnPropNameInRow="BuyerName" msprop:Generator_ColumnPropNameInTable="BuyerNameColumn" msprop:Generator_UserColumnName="BuyerName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TicketsBought" msprop:Generator_ColumnVarNameInTable="columnTicketsBought" msprop:Generator_ColumnPropNameInRow="TicketsBought" msprop:Generator_ColumnPropNameInTable="TicketsBoughtColumn" msprop:Generator_UserColumnName="TicketsBought" type="xs:int" />
+              <xs:element name="BonusTickets" msprop:Generator_ColumnVarNameInTable="columnBonusTickets" msprop:Generator_ColumnPropNameInRow="BonusTickets" msprop:Generator_ColumnPropNameInTable="BonusTicketsColumn" msprop:Generator_UserColumnName="BonusTickets" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
