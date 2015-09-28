@@ -40,11 +40,13 @@
             this.lblNumTixPurchased = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.getCountsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmClearDatabase = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuSeperator = new System.Windows.Forms.ToolStripSeparator();
             this.tsmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblGoldFromSales = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoughtTix)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -130,21 +132,22 @@
             // 
             this.lblTitleTixPur.AutoSize = true;
             this.lblTitleTixPur.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleTixPur.Location = new System.Drawing.Point(38, 284);
+            this.lblTitleTixPur.Location = new System.Drawing.Point(5, 284);
             this.lblTitleTixPur.Name = "lblTitleTixPur";
-            this.lblTitleTixPur.Size = new System.Drawing.Size(179, 22);
+            this.lblTitleTixPur.Size = new System.Drawing.Size(60, 22);
             this.lblTitleTixPur.TabIndex = 997;
-            this.lblTitleTixPur.Text = "Running Ticket Total";
+            this.lblTitleTixPur.Text = "Totals";
             // 
             // lblNumTixPurchased
             // 
             this.lblNumTixPurchased.AutoSize = true;
             this.lblNumTixPurchased.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumTixPurchased.Location = new System.Drawing.Point(117, 310);
+            this.lblNumTixPurchased.Location = new System.Drawing.Point(5, 306);
             this.lblNumTixPurchased.Name = "lblNumTixPurchased";
             this.lblNumTixPurchased.Size = new System.Drawing.Size(21, 22);
             this.lblNumTixPurchased.TabIndex = 996;
             this.lblNumTixPurchased.Text = "0";
+            this.lblNumTixPurchased.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // menuStrip1
             // 
@@ -160,12 +163,20 @@
             // tsmFile
             // 
             this.tsmFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.getCountsToolStripMenuItem,
             this.tsmClearDatabase,
             this.MenuSeperator,
             this.tsmExit});
             this.tsmFile.Name = "tsmFile";
             this.tsmFile.Size = new System.Drawing.Size(37, 20);
             this.tsmFile.Text = "&File";
+            // 
+            // getCountsToolStripMenuItem
+            // 
+            this.getCountsToolStripMenuItem.Name = "getCountsToolStripMenuItem";
+            this.getCountsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.getCountsToolStripMenuItem.Text = "&Get Counts";
+            this.getCountsToolStripMenuItem.Click += new System.EventHandler(this.getCountsToolStripMenuItem_Click);
             // 
             // tsmClearDatabase
             // 
@@ -198,16 +209,28 @@
             // tsmHelp
             // 
             this.tsmHelp.Name = "tsmHelp";
-            this.tsmHelp.Size = new System.Drawing.Size(152, 22);
+            this.tsmHelp.Size = new System.Drawing.Size(142, 22);
             this.tsmHelp.Text = "&General Help";
             this.tsmHelp.Click += new System.EventHandler(this.tsmHelp_Click);
+            // 
+            // lblGoldFromSales
+            // 
+            this.lblGoldFromSales.AutoSize = true;
+            this.lblGoldFromSales.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGoldFromSales.Location = new System.Drawing.Point(5, 328);
+            this.lblGoldFromSales.Name = "lblGoldFromSales";
+            this.lblGoldFromSales.Size = new System.Drawing.Size(21, 22);
+            this.lblGoldFromSales.TabIndex = 1002;
+            this.lblGoldFromSales.Text = "0";
+            this.lblGoldFromSales.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmInquisRaffleEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.ClientSize = new System.Drawing.Size(255, 335);
+            this.ClientSize = new System.Drawing.Size(255, 353);
+            this.Controls.Add(this.lblGoldFromSales);
             this.Controls.Add(this.lblNumTixPurchased);
             this.Controls.Add(this.lblTitleTixPur);
             this.Controls.Add(this.btnRunRaffle);
@@ -251,6 +274,8 @@
         private System.Windows.Forms.ToolStripSeparator MenuSeperator;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmHelp;
+        private System.Windows.Forms.ToolStripMenuItem getCountsToolStripMenuItem;
+        private System.Windows.Forms.Label lblGoldFromSales;
     }
 }
 

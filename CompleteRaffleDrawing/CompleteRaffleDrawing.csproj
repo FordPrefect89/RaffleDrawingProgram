@@ -80,7 +80,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TicketBuyerInfo.xsd</DependentUpon>
     </Compile>
-    <Compile Include="XMLDataTypes.cs" />
     <EmbeddedResource Include="CompleeRaffleForm.resx">
       <DependentUpon>CompleeRaffleForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -19,9 +19,16 @@ namespace CompleteRaffleDrawing
         {
             InitializeComponent();
             lblNumTix.Text = "Enter number of purchased tickets\r\n(No Bonus)";
+            PopulateTicketAndGoldSales();
+        }
+
+        private void PopulateTicketAndGoldSales()
+        {
             dbActions tmpCount = new dbActions();
             int ticketCount = tmpCount.GetTicketAmount();
-            lblNumTixPurchased.Text = ticketCount.ToString();
+            int ticketGold = tmpCount.GetGoldFromPurchasedTickets();
+            lblNumTixPurchased.Text = String.Format("{0} Tickets Sold", ticketCount.ToString());
+            lblGoldFromSales.Text = String.Format("{0} Gold Collected", (ticketGold * 997).ToString());
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -75,6 +82,9 @@ namespace CompleteRaffleDrawing
             if (MessageBox.Show("Clear data from database?\nThis will wipe the data from the database\nwith **NO** recovery possible.", "Clear Database", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 clearDB.ClearTicketBuyerTable();
+                dbActions tmpCount = new dbActions();
+                int ticketCount = tmpCount.GetTicketAmount();
+                lblNumTixPurchased.Text = ticketCount.ToString();
             }
         }
 
@@ -177,6 +187,12 @@ namespace CompleteRaffleDrawing
                 currentCount = Convert.ToInt32(lblNumTixPurchased.Text),
                 newEndNumber = currentCount + tickets + bonusTickets;
             return newEndNumber;
+        }
+
+        private void getCountsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var ticketCounts = new GridViewOfBuyers();
+            ticketCounts.ShowDialog();
         }
     }
 }

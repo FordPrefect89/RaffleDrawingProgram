@@ -23,7 +23,26 @@
               <Mapping SourceColumn="TicketsBought" DataSetColumn="TicketsBought" />
               <Mapping SourceColumn="BonusTickets" DataSetColumn="BonusTickets" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="rthowell89ConnectionString (Settings)" DbObjectName="rthowell89.dbo.TicketBuyer" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT BuyerName, TicketsBought, BonusTickets FROM dbo.TicketBuyer
+WHERE BuyerName &lt;&gt; 'Blank'</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="rthowell89ConnectionString (Settings)" DbObjectName="rthowell89.dbo.TicketBuyer" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT BuyerName, TicketsBought, BonusTickets FROM dbo.TicketBuyer
+WHERE BuyerName &lt;&gt; 'blank';</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -33,7 +52,7 @@
   <xs:element name="TicketBuyerInfo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="TicketBuyerInfo" msprop:Generator_UserDSName="TicketBuyerInfo">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="TicketBuyer" msprop:Generator_TableClassName="TicketBuyerDataTable" msprop:Generator_TableVarName="tableTicketBuyer" msprop:Generator_TablePropName="TicketBuyer" msprop:Generator_RowDeletingName="TicketBuyerRowDeleting" msprop:Generator_RowChangingName="TicketBuyerRowChanging" msprop:Generator_RowEvHandlerName="TicketBuyerRowChangeEventHandler" msprop:Generator_RowDeletedName="TicketBuyerRowDeleted" msprop:Generator_UserTableName="TicketBuyer" msprop:Generator_RowChangedName="TicketBuyerRowChanged" msprop:Generator_RowEvArgName="TicketBuyerRowChangeEvent" msprop:Generator_RowClassName="TicketBuyerRow">
+        <xs:element name="TicketBuyer" msprop:Generator_TableClassName="TicketBuyerDataTable" msprop:Generator_TableVarName="tableTicketBuyer" msprop:Generator_RowChangedName="TicketBuyerRowChanged" msprop:Generator_TablePropName="TicketBuyer" msprop:Generator_RowDeletingName="TicketBuyerRowDeleting" msprop:Generator_RowChangingName="TicketBuyerRowChanging" msprop:Generator_RowEvHandlerName="TicketBuyerRowChangeEventHandler" msprop:Generator_RowDeletedName="TicketBuyerRowDeleted" msprop:Generator_RowClassName="TicketBuyerRow" msprop:Generator_UserTableName="TicketBuyer" msprop:Generator_RowEvArgName="TicketBuyerRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="BuyerName" msprop:Generator_ColumnVarNameInTable="columnBuyerName" msprop:Generator_ColumnPropNameInRow="BuyerName" msprop:Generator_ColumnPropNameInTable="BuyerNameColumn" msprop:Generator_UserColumnName="BuyerName">

@@ -28,91 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GridViewOfBuyers));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ticketBuyerInfo = new CompleteRaffleDrawing.TicketBuyerInfo();
-            this.ticketBuyerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ticketBuyerTableAdapter = new CompleteRaffleDrawing.TicketBuyerInfoTableAdapters.TicketBuyerTableAdapter();
-            this.buyerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ticketsBoughtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bonusTicketsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketBuyerInfo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketBuyerBindingSource)).BeginInit();
+            this.dgvTicketQuantityInfo = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTicketQuantityInfo)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvTicketQuantityInfo
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.buyerNameDataGridViewTextBoxColumn,
-            this.ticketsBoughtDataGridViewTextBoxColumn,
-            this.bonusTicketsDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.ticketBuyerBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 13);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(346, 237);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // ticketBuyerInfo
-            // 
-            this.ticketBuyerInfo.DataSetName = "TicketBuyerInfo";
-            this.ticketBuyerInfo.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // ticketBuyerBindingSource
-            // 
-            this.ticketBuyerBindingSource.DataMember = "TicketBuyer";
-            this.ticketBuyerBindingSource.DataSource = this.ticketBuyerInfo;
-            // 
-            // ticketBuyerTableAdapter
-            // 
-            this.ticketBuyerTableAdapter.ClearBeforeFill = true;
-            // 
-            // buyerNameDataGridViewTextBoxColumn
-            // 
-            this.buyerNameDataGridViewTextBoxColumn.DataPropertyName = "BuyerName";
-            this.buyerNameDataGridViewTextBoxColumn.HeaderText = "BuyerName";
-            this.buyerNameDataGridViewTextBoxColumn.Name = "buyerNameDataGridViewTextBoxColumn";
-            // 
-            // ticketsBoughtDataGridViewTextBoxColumn
-            // 
-            this.ticketsBoughtDataGridViewTextBoxColumn.DataPropertyName = "TicketsBought";
-            this.ticketsBoughtDataGridViewTextBoxColumn.HeaderText = "TicketsBought";
-            this.ticketsBoughtDataGridViewTextBoxColumn.Name = "ticketsBoughtDataGridViewTextBoxColumn";
-            // 
-            // bonusTicketsDataGridViewTextBoxColumn
-            // 
-            this.bonusTicketsDataGridViewTextBoxColumn.DataPropertyName = "BonusTickets";
-            this.bonusTicketsDataGridViewTextBoxColumn.HeaderText = "BonusTickets";
-            this.bonusTicketsDataGridViewTextBoxColumn.Name = "bonusTicketsDataGridViewTextBoxColumn";
+            this.dgvTicketQuantityInfo.AllowUserToAddRows = false;
+            this.dgvTicketQuantityInfo.AllowUserToDeleteRows = false;
+            this.dgvTicketQuantityInfo.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvTicketQuantityInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvTicketQuantityInfo.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dgvTicketQuantityInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTicketQuantityInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvTicketQuantityInfo.Location = new System.Drawing.Point(0, 0);
+            this.dgvTicketQuantityInfo.Name = "dgvTicketQuantityInfo";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTicketQuantityInfo.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.dgvTicketQuantityInfo.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvTicketQuantityInfo.Size = new System.Drawing.Size(345, 262);
+            this.dgvTicketQuantityInfo.TabIndex = 0;
+            this.dgvTicketQuantityInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgTicketQuantityInfo_CellContentClick);
             // 
             // GridViewOfBuyers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 262);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(345, 262);
+            this.Controls.Add(this.dgvTicketQuantityInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GridViewOfBuyers";
-            this.Text = "Buyer Data";
-            this.Load += new System.EventHandler(this.GridViewOfBuyers_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketBuyerInfo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketBuyerBindingSource)).EndInit();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Ticket Counts";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTicketQuantityInfo)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private TicketBuyerInfo ticketBuyerInfo;
-        private System.Windows.Forms.BindingSource ticketBuyerBindingSource;
-        private TicketBuyerInfoTableAdapters.TicketBuyerTableAdapter ticketBuyerTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn buyerNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ticketsBoughtDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bonusTicketsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dgvTicketQuantityInfo;
     }
 }

@@ -125,6 +125,28 @@ namespace CompleteRaffleDrawing
             return returnCount;
         }
 
+        public int GetGoldFromPurchasedTickets()
+        {
+            string query = "SELECT TicketsBought from dbo.Ticketbuyer WHERE BuyerName <> 'blank';";
+            DataTable dt = ReturnQueryDataTable(query);
+            return ReturnTicketsBought(dt);
+        }
+
+        private static int ReturnTicketsBought(DataTable dt)
+        {
+            int boughtTickets = 0;
+            var jnkQuery = from jnkDt in dt.AsEnumerable()
+                           select new
+                           {
+                               count = jnkDt.Field<int>("TicketsBought")
+                           };
+            foreach (var count in jnkQuery)
+            {
+                boughtTickets = boughtTickets + count.count;
+            }
+            return boughtTickets;
+        }
+
         public string GetWinnerName(int winningNumber)
         {
             /*
@@ -215,6 +237,12 @@ namespace CompleteRaffleDrawing
             return buyerNames;
         }
 
+        public DataTable ReturnTicketBuyersTotals(string query)
+        {
+            DataTable dt = ReturnQueryDataTable(query);
+            return dt;
+        }
+
         private DataTable ReturnQueryDataTable(string query)
         {
             SqlConnection con = new SqlConnection(ReturnConnectionString());
@@ -246,7 +274,7 @@ namespace CompleteRaffleDrawing
         private static string ReturnConnectionString()
         {
             // Returns the connection to connect to the database.
-            string con = "Server=rthowell89.db.13580181.hostedresource.com;User Id=rthowell89;Password=Mag#tar5;";
+            string con = "Server=rthowell89.db.13580181.hostedresource.com;User Id=rthowell89;Password=;";
             return con;
         }
     }

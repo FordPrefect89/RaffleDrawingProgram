@@ -15,13 +15,16 @@ namespace CompleteRaffleDrawing
         public GridViewOfBuyers()
         {
             InitializeComponent();
+            dvgTicketQuantityInfo_CellContentClick(null, null);
         }
 
-        private void GridViewOfBuyers_Load(object sender, EventArgs e)
+        private void dvgTicketQuantityInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // TODO: This line of code loads data into the 'ticketBuyerInfo.TicketBuyer' table. You can move, or remove it, as needed.
-            this.ticketBuyerTableAdapter.Fill(this.ticketBuyerInfo.TicketBuyer);
-
+            dbActions jnk = new dbActions();
+            string query = @"SELECT BuyerName, TicketsBought, BonusTickets from dbo.Ticketbuyer WHERE BuyerName <> 'blank' ORDER BY BuyerName ASC;";
+            DataTable dt = jnk.ReturnTicketBuyersTotals(query);
+            dgvTicketQuantityInfo.DataSource = dt;
+            
         }
     }
 }
