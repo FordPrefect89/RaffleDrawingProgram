@@ -55,6 +55,7 @@
       <DependentUpon>CompleeRaffleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="dbActions.cs" />
+    <Compile Include="GenerateSingleWinners.cs" />
     <Compile Include="GridViewOfBuyers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ebonheart_pact_U4e_icon.ico" />
+    <Content Include="SQLQuery1.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

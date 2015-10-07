@@ -152,12 +152,29 @@ namespace CompleteRaffleDrawing
             /*
              * TODO:
              *      Create SQL function to return string versus calling
-             *      ReturnWinnerNameFromDataTable to get the max ticket
-             *      number from the database.
+             *      ReturnWinnerNameFromDataTable to get the name from
+             *      the database.
              */
             string query = string.Concat("SELECT DISTINCT BuyerName FROM dbo.TicketBuyer WHERE ", winningNumber, " BETWEEN TicketNumberStart AND TicketNumberEnd;");
             DataTable dt = ReturnQueryDataTable(query);
             return ReturnWinnerNameFromDataTable(dt);
+        }
+
+        public List<string> GetWinningNames(int winningNumber)
+        {
+            List<string> tmpNames = new List<string>();
+            string query = string.Concat("SELECT DISTINCT BuyerName FROM dbo.TicketBuyer WHERE ", winningNumber, " BETWEEN TicketNumberStart AND TicketNumberEnd;");
+            DataTable dt = ReturnQueryDataTable(query);
+            string tmpName = ReturnWinnerNameFromDataTable(dt);
+
+            if (tmpNames.Contains(tmpName))
+            {
+
+            }
+            else
+                tmpNames.Add(tmpName);
+
+            return tmpNames;
         }
 
         private static string ReturnWinnerNameFromDataTable(DataTable dt)
@@ -243,7 +260,7 @@ namespace CompleteRaffleDrawing
             return dt;
         }
 
-        private DataTable ReturnQueryDataTable(string query)
+        public DataTable ReturnQueryDataTable(string query)
         {
             SqlConnection con = new SqlConnection(ReturnConnectionString());
             SqlDataAdapter da = new SqlDataAdapter(query, con);
@@ -271,7 +288,7 @@ namespace CompleteRaffleDrawing
             System.Environment.Exit(0);
         }
 
-        private static string ReturnConnectionString()
+        public static string ReturnConnectionString()
         {
             // Returns the connection to connect to the database.
             string con = "Server=rthowell89.db.13580181.hostedresource.com;User Id=rthowell89;Password=;";

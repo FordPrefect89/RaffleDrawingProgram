@@ -25,15 +25,17 @@ namespace CompleteRaffleDrawing
 
         private void PlaceWinnerNames(int[] winNumber)
         {
-            dbActions dBase = new dbActions();
-            lblWinner1.Text = dBase.GetWinnerName(winNumber[0]);
-            lblWinner2.Text = dBase.GetWinnerName(winNumber[1]);
-            lblWinner3.Text = dBase.GetWinnerName(winNumber[2]);
-            lblWinner4.Text = dBase.GetWinnerName(winNumber[3]);
-            lblWinner5.Text = dBase.GetWinnerName(winNumber[4]);
-            lblWinner6.Text = dBase.GetWinnerName(winNumber[5]);
-            lblWinner7.Text = dBase.GetWinnerName(winNumber[6]);
-            lblWinner8.Text = dBase.GetWinnerName(winNumber[7]);
+            //dbActions dBase = new dbActions();
+            GenerateSingleWinners winners = new GenerateSingleWinners();
+            List<string> winnerList = winners.ReturnWinners();
+            lblWinner1.Text = winnerList[0];
+            lblWinner2.Text = winnerList[1];
+            lblWinner3.Text = winnerList[2];
+            lblWinner4.Text = winnerList[3];
+            lblWinner5.Text = winnerList[4];
+            lblWinner6.Text = winnerList[5];
+            lblWinner7.Text = winnerList[6];
+            lblWinner8.Text = winnerList[7];
         }
 
         private void GenerateBonusPrizeWinners()
