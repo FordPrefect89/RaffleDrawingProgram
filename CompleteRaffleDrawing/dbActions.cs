@@ -92,37 +92,16 @@ namespace CompleteRaffleDrawing
 
         public int GetTicketAmount()
         {
-            /*
-             * Called when the lblNumTixPurchased needs to be updated.
-             * TODO:
-             *      Create SQL function to return int versus calling
-             *      ReturnTicketCount to get the max ticket number from
-             *      the database.
-             */
-            string query = "SELECT MAX(TicketNumberEnd) AS Tickets FROM dbo.TicketBuyer";
-            DataTable dt = ReturnQueryDataTable(query);
-            return ReturnTicketCount(dt);
-        }
+            string query = "SELECT dbo.GetTicketTotal();";
+            int ticketCount = 0;
 
-        private static int ReturnTicketCount(DataTable dt)
-        {
-            /*
-             * This is taking the place currently of an SQL funciton
-             * to return an int from the database.  Once the SQL function
-             * is working, this method will no longer be needed.
-             */
-            int returnCount = 0;
-            var jnkQuery = from jnkDt in dt.AsEnumerable()
-                           select new
-                           {
-                               count = jnkDt.Field<int>("Tickets")
-                           };
-            foreach (var ticketCount in jnkQuery)
-            {
-                returnCount = Convert.ToInt32(ticketCount.count);
-            }
+            SqlConnection con = new SqlConnection(ReturnConnectionString());
+            SqlCommand cmd = new SqlCommand(query, con);
 
-            return returnCount;
+            con.Open();
+            ticketCount = Convert.ToInt32(cmd.ExecuteScalar());
+            con.Close();
+            return ticketCount;
         }
 
         public int GetGoldFromPurchasedTickets()
