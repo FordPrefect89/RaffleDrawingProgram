@@ -24,11 +24,17 @@ namespace CompleteRaffleDrawing
 
         private void PopulateTicketAndGoldSales()
         {
+            const int TICKETPRICE = 997;
+            /*
+             * Gets the total number of tickets sold from the database and then displays the max
+             * number as well as giving a calculation of gold rasied based on the price per ticket *
+             * tickets sold.
+             */
             dbActions tmpCount = new dbActions();
             int ticketCount = tmpCount.GetTicketAmount();
-            int ticketGold = tmpCount.GetGoldFromPurchasedTickets();
+            
             lblNumTixPurchased.Text = String.Format("{0} Tickets Sold", ticketCount.ToString());
-            lblGoldFromSales.Text = String.Format("{0} Gold Collected", (ticketGold * 997).ToString());
+            lblGoldFromSales.Text = String.Format("{0} Gold Collected", (ticketCount * TICKETPRICE).ToString());
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
