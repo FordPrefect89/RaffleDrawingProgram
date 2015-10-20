@@ -92,113 +92,28 @@ namespace CompleteRaffleDrawing
 
         public int GetTicketAmount()
         {
+            /*
+             * This calls the stored function to retrieve the int32
+             * for the total number of tickets sold.  
+             */
             string query = "SELECT dbo.GetTicketTotal();";
             int ticketCount = 0;
 
             SqlConnection con = new SqlConnection(ReturnConnectionString());
             SqlCommand cmd = new SqlCommand(query, con);
 
-            con.Open();
-            ticketCount = Convert.ToInt32(cmd.ExecuteScalar());
-            con.Close();
+            try
+            {
+                con.Open();
+                ticketCount = Convert.ToInt32(cmd.ExecuteScalar());
+                con.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Unable to connecto to database\nPlease check Internet connection\nand try again", "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExitApplication();
+            }
             return ticketCount;
-        }
-
-        public int GetGoldFromPurchasedTickets()
-        {
-            string query = "SELECT TicketsBought from dbo.Ticketbuyer WHERE BuyerName <> 'blank';";
-            DataTable dt = ReturnQueryDataTable(query);
-            return ReturnTicketsBought(dt);
-        }
-
-        private static int ReturnTicketsBought(DataTable dt)
-        {
-            int boughtTickets = 0;
-            var jnkQuery = from jnkDt in dt.AsEnumerable()
-                           select new
-                           {
-                               count = jnkDt.Field<int>("TicketsBought")
-                           };
-            foreach (var count in jnkQuery)
-            {
-                boughtTickets = boughtTickets + count.count;
-            }
-            return boughtTickets;
-        }
-
-        public string GetWinnerName(int winningNumber)
-        {
-            /*
-             * TODO:
-             *      Create SQL function to return string versus calling
-             *      ReturnWinnerNameFromDataTable to get the name from
-             *      the database.
-             */
-            string query = string.Concat("SELECT DISTINCT BuyerName FROM dbo.TicketBuyer WHERE ", winningNumber, " BETWEEN TicketNumberStart AND TicketNumberEnd;");
-            DataTable dt = ReturnQueryDataTable(query);
-            return ReturnWinnerNameFromDataTable(dt);
-        }
-
-        public List<string> GetWinningNames(int winningNumber)
-        {
-            List<string> tmpNames = new List<string>();
-            string query = string.Concat("SELECT DISTINCT BuyerName FROM dbo.TicketBuyer WHERE ", winningNumber, " BETWEEN TicketNumberStart AND TicketNumberEnd;");
-            DataTable dt = ReturnQueryDataTable(query);
-            string tmpName = ReturnWinnerNameFromDataTable(dt);
-
-            if (tmpNames.Contains(tmpName))
-            {
-
-            }
-            else
-                tmpNames.Add(tmpName);
-
-            return tmpNames;
-        }
-
-        private static string ReturnWinnerNameFromDataTable(DataTable dt)
-        {
-            string winner = string.Empty;
-            var jnkQuery = from jnkDt in dt.AsEnumerable()
-                           select new
-                           {
-                               name = jnkDt.Field<string>("BuyerName")
-                           };
-            foreach (var jnkWinner in jnkQuery)
-            {
-                winner = jnkWinner.name;
-            }
-
-            return winner;
-        }
-
-        public int ReturnBuyerCount()
-        {
-            /*
-             * TODO:
-             *      Create SQL function to return int versus calling
-             *      ReturnTotalBuyers to get the max ticket
-             *      number from the database.
-             */
-            string query = "SELECT COUNT(DISTINCT BuyerName) AS Buyers FROM dbo.TicketBuyer";
-            DataTable dt = ReturnQueryDataTable(query);
-            return ReturnTotalBuyers(dt);
-        }
-
-        private static int ReturnTotalBuyers(DataTable dt)
-        {
-            int returnCount = 0;
-            var jnkQuery = from jnkDt in dt.AsEnumerable()
-                           select new
-                           {
-                               count = jnkDt.Field<int>("Buyers")
-                           };
-            foreach (var buyerCount in jnkQuery)
-            {
-                returnCount = Convert.ToInt32(buyerCount.count);
-            }
-
-            return returnCount;
         }
 
         public List<string> ReturnDistinctBuyers(string[] winnerNames)
@@ -215,6 +130,11 @@ namespace CompleteRaffleDrawing
 
         private static List<string> ReturnTotalDistinctBuyers(DataTable dt, string[] winnerNames)
         {
+            /*
+             * This takes the array of winners and removes them from the data table
+             * then adds the name, if it is not a winner to the List<string> to return
+             * it so that the bonus winners can then be drawn.
+             */
             List<string> buyerNames = new List<string>();
 
             var jnkQuery = from jnkDt in dt.AsEnumerable()
@@ -233,14 +153,12 @@ namespace CompleteRaffleDrawing
             return buyerNames;
         }
 
-        public DataTable ReturnTicketBuyersTotals(string query)
-        {
-            DataTable dt = ReturnQueryDataTable(query);
-            return dt;
-        }
-
         public DataTable ReturnQueryDataTable(string query)
         {
+            /*
+             * This method is called when a data table is needed to be returned from the database
+             * All that needs to be passed to this is a T-SQL query string.  
+             */
             SqlConnection con = new SqlConnection(ReturnConnectionString());
             SqlDataAdapter da = new SqlDataAdapter(query, con);
             DataSet ds = new DataSet();
@@ -251,7 +169,7 @@ namespace CompleteRaffleDrawing
                 da.Fill(ds);
                 con.Close();
             }
-            catch (Exception e)
+            catch
             {
                 MessageBox.Show("Unable to connecto to database\nPlease check Internet connection\nand try again", "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ExitApplication();
@@ -269,7 +187,7 @@ namespace CompleteRaffleDrawing
 
         public static string ReturnConnectionString()
         {
-            // Returns the connection to connect to the database.
+            // Returns the connection to connect to the database.  PRIOR TO COMMIT TO GIT REMOVE PASSWORD!
             string con = "Server=rthowell89.db.13580181.hostedresource.com;User Id=rthowell89;Password=;";
             return con;
         }
