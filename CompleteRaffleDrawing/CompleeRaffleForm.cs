@@ -33,8 +33,8 @@ namespace CompleteRaffleDrawing
             int ticketCount = tmpCount.GetTicketAmount(),
                 goldFromSales = dbActions.GoldAmountForTicketSales();
             
-            lblNumTixPurchased.Text = ticketCount.ToString();//String.Format("Tickets Sold:      {0}", ticketCount.ToString());
-            lblGoldFromSales.Text =   goldFromSales.ToString();//String.Format("Gold Collected: {0}", goldFromSales.ToString());
+            lblNumTixPurchased.Text = ticketCount.ToString();
+            lblGoldFromSales.Text =   goldFromSales.ToString();
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -54,12 +54,15 @@ namespace CompleteRaffleDrawing
                     freeTickets = 0;
 
                 dbWrite.InsertBuyer(txtBuyerName.Text, Convert.ToInt32(txtBoughtTix.Value), bonusTix, startValue, endValue, freeTickets);
-                lblNumTixPurchased.Text = dbWrite.GetTicketAmount().ToString();
+                //lblNumTixPurchased.Text = dbWrite.GetTicketAmount().ToString();
+
+                PopulateTicketAndGoldSales();
 
                 MessageBox.Show(string.Concat(txtBuyerName.Text, " bought\n", txtBoughtTix.Value.ToString()," tickets\nWith ", bonusTix.ToString(), " bonus tickets."), "Ticket Purchase", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 txtBuyerName.Text = string.Empty;
                 txtBoughtTix.Value = 0;
+                chkFreeTickets.Checked = false;
             }
         }
 
