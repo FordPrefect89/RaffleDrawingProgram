@@ -47,6 +47,9 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.lblGoldFromSales = new System.Windows.Forms.Label();
+            this.chkFreeTickets = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoughtTix)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -142,7 +145,7 @@
             // 
             this.lblNumTixPurchased.AutoSize = true;
             this.lblNumTixPurchased.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumTixPurchased.Location = new System.Drawing.Point(5, 306);
+            this.lblNumTixPurchased.Location = new System.Drawing.Point(156, 306);
             this.lblNumTixPurchased.Name = "lblNumTixPurchased";
             this.lblNumTixPurchased.Size = new System.Drawing.Size(21, 22);
             this.lblNumTixPurchased.TabIndex = 996;
@@ -217,12 +220,44 @@
             // 
             this.lblGoldFromSales.AutoSize = true;
             this.lblGoldFromSales.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGoldFromSales.Location = new System.Drawing.Point(5, 328);
+            this.lblGoldFromSales.Location = new System.Drawing.Point(156, 328);
             this.lblGoldFromSales.Name = "lblGoldFromSales";
             this.lblGoldFromSales.Size = new System.Drawing.Size(21, 22);
             this.lblGoldFromSales.TabIndex = 1002;
             this.lblGoldFromSales.Text = "0";
             this.lblGoldFromSales.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chkFreeTickets
+            // 
+            this.chkFreeTickets.AutoSize = true;
+            this.chkFreeTickets.Location = new System.Drawing.Point(5, 197);
+            this.chkFreeTickets.Name = "chkFreeTickets";
+            this.chkFreeTickets.Size = new System.Drawing.Size(85, 17);
+            this.chkFreeTickets.TabIndex = 1003;
+            this.chkFreeTickets.Text = "Free Tickets";
+            this.chkFreeTickets.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1, 328);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(147, 22);
+            this.label1.TabIndex = 1005;
+            this.label1.Text = "Gold Collected: ";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(1, 306);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 22);
+            this.label2.TabIndex = 1004;
+            this.label2.Text = "Tickets Sold:      ";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmInquisRaffleEntry
             // 
@@ -230,6 +265,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.ClientSize = new System.Drawing.Size(255, 353);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.chkFreeTickets);
             this.Controls.Add(this.lblGoldFromSales);
             this.Controls.Add(this.lblNumTixPurchased);
             this.Controls.Add(this.lblTitleTixPur);
@@ -276,6 +314,9 @@
         private System.Windows.Forms.ToolStripMenuItem tsmHelp;
         private System.Windows.Forms.ToolStripMenuItem getCountsToolStripMenuItem;
         private System.Windows.Forms.Label lblGoldFromSales;
+        private System.Windows.Forms.CheckBox chkFreeTickets;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

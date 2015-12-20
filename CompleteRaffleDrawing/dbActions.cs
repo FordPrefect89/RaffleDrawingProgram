@@ -13,14 +13,14 @@ namespace CompleteRaffleDrawing
 {
     class dbActions
     {
-        public void InsertBuyer(string buyerName, int boughtTickets, int bonus, int startValue, int endValue)
+        public void InsertBuyer(string buyerName, int boughtTickets, int bonus, int startValue, int endValue, int freeTickets)
         {
             /*
              * Writes the buyers name, number of tickets bought plus bonus tickets to the database.
              * Also writes the "starting" and "ending" number for the buyer of the ticket.
              */
             SqlConnection con = new SqlConnection(ReturnConnectionString());
-            string query = "INSERT INTO dbo.TicketBuyer VALUES (@name, @bought, @bonus, @start, @end)";
+            string query = "INSERT INTO dbo.TicketBuyer VALUES (@name, @bought, @bonus, @start, @end, @freebies)";
 
             var cmd = new SqlCommand(query, con);
 
@@ -29,6 +29,7 @@ namespace CompleteRaffleDrawing
             cmd.Parameters.AddWithValue("@bonus", SqlDbType.Int).Value = bonus;
             cmd.Parameters.AddWithValue("@start", SqlDbType.Int).Value = startValue;
             cmd.Parameters.AddWithValue("@end", SqlDbType.Int).Value = endValue;
+            cmd.Parameters.AddWithValue("@freebies", SqlDbType.Bit).Value = freeTickets;
 
             try
             {
@@ -114,6 +115,36 @@ namespace CompleteRaffleDrawing
                 ExitApplication();
             }
             return ticketCount;
+        }
+
+        public static int GoldAmountForTicketSales()
+        {
+            /*
+             * Returns the value of the total tickets sold.
+             * SQL Funciton will get the total number of tickets sold and not the ones given
+             * for free through the auction.
+             * Results in more accurate gold total returned.
+             */
+            string query = "SELECT dbo.GetTotalSoldTickets()";
+            const int TICKETCOST = 997;
+            int soldGoldTotal = 0;
+
+            SqlConnection con = new SqlConnection(ReturnConnectionString());
+            SqlCommand cmd = new SqlCommand(query, con);
+
+            try
+            {
+                con.Open();
+                soldGoldTotal = Convert.ToInt32(cmd.ExecuteScalar());
+                con.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Unable to connecto to database\nPlease check Internet connection\nand try again", "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExitApplication();
+            }
+
+            return TICKETCOST * soldGoldTotal;
         }
 
         public List<string> ReturnDistinctBuyers(string[] winnerNames)

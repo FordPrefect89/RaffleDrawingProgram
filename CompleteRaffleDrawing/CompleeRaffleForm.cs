@@ -24,17 +24,17 @@ namespace CompleteRaffleDrawing
 
         private void PopulateTicketAndGoldSales()
         {
-            const int TICKETPRICE = 997;
             /*
              * Gets the total number of tickets sold from the database and then displays the max
              * number as well as giving a calculation of gold rasied based on the price per ticket *
              * tickets sold.
              */
             dbActions tmpCount = new dbActions();
-            int ticketCount = tmpCount.GetTicketAmount();
+            int ticketCount = tmpCount.GetTicketAmount(),
+                goldFromSales = dbActions.GoldAmountForTicketSales();
             
-            lblNumTixPurchased.Text = String.Format("{0} Tickets Sold", ticketCount.ToString());
-            lblGoldFromSales.Text = String.Format("{0} Gold Collected", (ticketCount * TICKETPRICE).ToString());
+            lblNumTixPurchased.Text = ticketCount.ToString();//String.Format("Tickets Sold:      {0}", ticketCount.ToString());
+            lblGoldFromSales.Text =   goldFromSales.ToString();//String.Format("Gold Collected: {0}", goldFromSales.ToString());
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -45,9 +45,15 @@ namespace CompleteRaffleDrawing
                 dbActions dbWrite = new dbActions();
                 int bonusTix = CalculateBonusTickets(),
                     startValue = Convert.ToInt32(lblNumTixPurchased.Text) + 1,
-                    endValue = CalculateEndValue(bonusTix);
+                    endValue = CalculateEndValue(bonusTix),
+                    freeTickets = 0;    // Free tickets given in auction.  Bit flag in database, 0 for none, 1 for freebies
 
-                dbWrite.InsertBuyer(txtBuyerName.Text, Convert.ToInt32(txtBoughtTix.Value), bonusTix, startValue, endValue);
+                if (chkFreeTickets.Checked)
+                    freeTickets = 1;
+                else
+                    freeTickets = 0;
+
+                dbWrite.InsertBuyer(txtBuyerName.Text, Convert.ToInt32(txtBoughtTix.Value), bonusTix, startValue, endValue, freeTickets);
                 lblNumTixPurchased.Text = dbWrite.GetTicketAmount().ToString();
 
                 MessageBox.Show(string.Concat(txtBuyerName.Text, " bought\n", txtBoughtTix.Value.ToString()," tickets\nWith ", bonusTix.ToString(), " bonus tickets."), "Ticket Purchase", MessageBoxButtons.OK, MessageBoxIcon.Information);
