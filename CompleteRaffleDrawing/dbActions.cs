@@ -56,7 +56,7 @@ namespace CompleteRaffleDrawing
              */
             SqlConnection con = new SqlConnection(ReturnConnectionString());
             string clearTable = "DELETE FROM dbo.TicketBuyer",
-                insertZero = "INSERT INTO dbo.TicketBuyer VALUES (@name, @bought, @bonus, @start, @end)";
+                insertZero = "INSERT INTO dbo.TicketBuyer VALUES (@name, @bought, @bonus, @start, @end, @freebies)";
 
             var cmd = new SqlCommand(clearTable, con);
             try
@@ -77,6 +77,7 @@ namespace CompleteRaffleDrawing
             cmd.Parameters.AddWithValue("@bonus", SqlDbType.Int).Value = 0;
             cmd.Parameters.AddWithValue("@start", SqlDbType.Int).Value = 0;
             cmd.Parameters.AddWithValue("@end", SqlDbType.Int).Value = 0;
+            cmd.Parameters.AddWithValue("@freebies", SqlDbType.Int).Value = 0;
 
             try
             {
@@ -142,6 +143,7 @@ namespace CompleteRaffleDrawing
             {
                 MessageBox.Show("Unable to connecto to database\nPlease check Internet connection\nand try again", "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ExitApplication();
+               
             }
 
             return TICKETCOST * soldGoldTotal;
@@ -219,7 +221,7 @@ namespace CompleteRaffleDrawing
         public static string ReturnConnectionString()
         {
             // Returns the connection to connect to the database.  PRIOR TO COMMIT TO GIT REMOVE PASSWORD!
-            string con = "Server=rthowell89.db.13580181.hostedresource.com;User Id=rthowell89;Password=Mag#tar5;";
+            string con = "Server=rthowell89.db.13580181.hostedresource.com;User Id=rthowell89;Password;";
             return con;
         }
     }
