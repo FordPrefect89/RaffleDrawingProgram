@@ -110,7 +110,7 @@ namespace CompleteRaffleDrawing
                 ticketCount = Convert.ToInt32(cmd.ExecuteScalar());
                 con.Close();
             }
-            catch
+            catch (Exception e)
             {
                 MessageBox.Show("Unable to connecto to database\nPlease check Internet connection\nand try again", "Unable to Connect", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ExitApplication();
@@ -221,7 +221,7 @@ namespace CompleteRaffleDrawing
         public static string ReturnConnectionString()
         {
             // Returns the connection to connect to the database.  PRIOR TO COMMIT TO GIT REMOVE PASSWORD!
-            string con = "Server=rthowell89.db.13580181.hostedresource.com;User Id=rthowell89;Password=;";
+            string con = "Server=rthowell89.db.13580181.hostedresource.com;User Id=rthowell89;Password=Mag#tar5;";
             return con;
         }
     }

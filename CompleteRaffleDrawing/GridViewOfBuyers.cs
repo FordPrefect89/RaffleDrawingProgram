@@ -21,7 +21,7 @@ namespace CompleteRaffleDrawing
         private void dvgTicketQuantityInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dbActions jnk = new dbActions();
-            string query = @"SELECT BuyerName, TicketsBought, BonusTickets from dbo.Ticketbuyer WHERE BuyerName <> 'blank' ORDER BY TicketsBought, BuyerName;";
+            string query = @"SELECT BuyerName, TicketsBought, BonusTickets from dbo.Ticketbuyer WHERE BuyerName <> 'blank' ORDER BY BuyerName, TicketsBought;";
             DataTable dt = jnk.ReturnQueryDataTable(query);
             dgvTicketQuantityInfo.DataSource = dt;
             
